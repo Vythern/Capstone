@@ -30,12 +30,15 @@ img {
 }
 /*------------------------------ HEADER ------------------------------*/
 #header {
+    
 	margin-bottom: 20px;
 	padding-top: 20px;
 }
 /** Logo **/
 #logo {
-	float: left;
+    display: flex;
+    justify-content: center;
+    height: 100px;
 	margin-bottom: 20px;
 	margin-left: 49px;
 }
@@ -44,7 +47,7 @@ img {
 	background: url(../images/bg-navigation.png) no-repeat;
 	clear: both;
 	height: 50px;
-	width: 860px;
+	width: 858px;
 	margin: 0 auto;
 	padding: 1px;
 }
@@ -60,7 +63,7 @@ img {
 	background-position: 0 -118px;
 	background-repeat: no-repeat;
 	height: 49px;
-	width: 122px;
+	width: 214px;
 	margin: 0;
 	padding-left: 1px;
 	text-align: center;
@@ -84,7 +87,7 @@ img {
 }
 #navigation li.selected a {
 	background-position: 0 0;
-	color: #e4e1bd;
+	color: #000000;
 }
 /*------------------------------ CONTENTS ------------------------------*/
 #contents {
@@ -93,14 +96,14 @@ img {
 	padding: 0 47px;
 }
 #contents h1 {
-	color: #316e66;
+	color: #000000;
 	font: 26px/30px "Times New Roman", Times, serif;
 	margin: 18px 0 20px;
 	padding-left: 2px;
 	text-transform: uppercase;
 }
 #contents div.body h1, #contents h2 {
-	color: #316e66;
+	color: #fff;
 	font: 30px/30px "Times New Roman", Times, serif;
 	margin: 0 0 18px;
 	text-transform: uppercase;
@@ -110,21 +113,21 @@ img {
 	margin: 0 0 30px;
 }
 #contents h2 a {
-	color: #2c9688;
+	color: #FFA500;
 	text-decoration: none;
 }
 #contents p {
-	color: #5a4535;
+	color: #808080;
 	font-size: 15px;
 	line-height: 30px;
 	margin: 0;
 	padding: 0 0 24px 2px;
 }
 #contents p a {
-	color: #5a4535;
+	color: #0000FF;
 }
 #contents p a:hover, #news div.sidebar ul li a:hover {
-	color: #917157;
+	color: #808080;
 }
 /** box-shadow **/
 #contents div.box {
@@ -137,10 +140,11 @@ img {
 	background-position: -1745px top;
 	padding: 6px 0 0;
 }
-#contents div.body {
+#contents div.body 
+{
 	background-position: -871px top;
 	background-repeat: repeat-y;
-	min-height: 980px;
+	min-height: 1200px;
 	padding: 30px 40px 0;
 }
 /** Adbox **/
@@ -153,13 +157,19 @@ img {
 #adbox p {
 	font-size: 16px;
 }
-.ads {
-	float: right;
+.list {
+	float: left;
 	width: 220px;
 	border-left: 1px solid #bbbbbb;
-	margin-left: 20px;
-	padding-left: 20px;
+	padding-left: 10px;
+    border-right: 1px solid #bbbbbb;
 }
+
+.horizontal-spacer {
+    display: inline-block;
+    width: 20px;
+}
+
 hr {
 	border:0;
 	border-top: 1px solid #bbbbbb;
@@ -186,7 +196,7 @@ hr {
 	padding: 17px;
 }
 #main div.box h3 {
-	color: #316e66;
+	color: #000000;
 	font-weight: normal;
 	letter-spacing: 1px;
 	border-bottom: 1px dotted #9c8964;
@@ -240,7 +250,7 @@ hr {
 }
 /** testimonials **/
 #contents div#testimonials h3 {
-	color: #2c9688;
+	color: #000000;
 	font-weight: normal;
 	letter-spacing: 1px;
 	border-bottom: 0;
@@ -255,35 +265,35 @@ hr {
 	float: right;
 }
 #testimonials p span a {
-	color: #2c9688;
+	color: #000000;
 	text-decoration: none;
 }
 #testimonials p span a:hover {
-	color: #2c9688;
+	color: #000000;
 }
-/** Rooms, Foods Dive Sites **/
-#rooms, #foods, #sites {
+/** Projects, Foods Dive Sites **/
+#projects, #foods, #sites {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
-#rooms li, #foods li, #sites li {
+#projects li, #foods li, #sites li {
 	display: inline-block;
 	width: 784px;
 	border-top: 1px solid #b7b7b7;
 	padding: 30px 0;
 	position: relative;
 }
-#rooms li:first-child, #foods li:first-child, #sites li:first-child {
+#projects li:first-child, #foods li:first-child, #sites li:first-child {
 	border-top: 0;
 }
-#rooms li img {
+#projects li img {
 	float: left;
 	border: 1px solid #2c9688;
 	margin-right: 15px;
 }
-#rooms .rate {
-	color: #316e66;
+#projects .rate {
+	color: #FFA500;
 	display: inline-block;
 	font: 16px/35px "Times New Roman", Times, serif;
 	height: 35px;
@@ -301,7 +311,7 @@ hr {
 }
 #foods li > div.infos p {
 	background: url(../images/bg-foodDetail.png) repeat;
-	color: #316e66;
+	color: #000000;
 	display: none;
 	height: 60px;
 	width: 740px;
@@ -359,7 +369,7 @@ hr {
 	margin-bottom: 30px;
 }
 #news > div span.author {
-	color: #2c9688;
+	color: #000000;
 	display: block;
 	font-size: 14px;
 	margin-bottom: 20px;
@@ -371,7 +381,7 @@ hr {
 	padding: 0;
 }
 #news div.sidebar h3 {
-	color: #2c9688;
+	color: #000000;
 	font-size: 20px;
 	font-weight: normal;
 	border-top: 1px solid #b7b7b7;
@@ -401,7 +411,7 @@ hr {
 /** Contact **/
 #contact form {
 	float: right;
-	color: #5a4535;
+	color: #808080;
 	height: 320px;
 	width: 420px;
 	border: 1px solid #5a4535;
@@ -456,7 +466,7 @@ hr {
 }
 /*------------------------------ FOOTER ------------------------------*/
 #footer {
-	color: #594334;
+	color: #fff;
 	font-size: 14px;
 	line-height: 48px;
 	margin: -38px 0 20px;
@@ -464,11 +474,11 @@ hr {
 	text-transform: uppercase;
 }
 #footer > div {
-	background-color: #ac9e94;
+	background-color: #2E2E2E;
 	height: 48px;
 	width: 822px;
-	border-bottom: 1px solid #72675f;
-	border-top: 1px solid #cdbeb2;
+	border-bottom: 1px solid #fff;
+	border-top: 1px solid #fff;
 	margin: 0 auto;
 	padding: 0 20px;
 	text-align: right;
@@ -485,7 +495,7 @@ hr {
 	margin-right: 10px;
 }
 #footer ul.navigation li a {
-	color: #594334;
+	color: #fff;
 	padding: 0 5px;
 	text-decoration: none;
 }
@@ -497,7 +507,7 @@ hr {
 	color: #eee7c3;
 }
 #footer ul.navigation li.active a {
-	color: #fff;
+	color: #FFA500;
 }
 #footer p {
 	margin: 0;

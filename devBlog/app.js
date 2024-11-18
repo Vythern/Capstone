@@ -11,7 +11,7 @@ require('./app_api/config/passport');
 //routers
 var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
-var travelRouter = require('./app_server/routes/travel');
+var updatesRouter = require('./app_server/routes/updates');
 var apiRouter = require('./app_api/routes/index');
 
 var handlebars = require('hbs');
@@ -50,7 +50,7 @@ app.use('/api', (req, res, next) =>
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/travel', travelRouter);
+app.use('/updates', updatesRouter);
 app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
