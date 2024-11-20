@@ -12,5 +12,5 @@ import { NavbarComponent } from './navbar/navbar.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'devBlog Getaways Admin!';
+  title = 'Vythern\'s devBlog Admin';
 }

@@ -1,4 +1,4 @@
-const tripsEndpoint = 'http://localhost:300/api/trips';
+const tripsEndpoint = 'http://localhost:3000/api/trips';
 const options =
 {
     method: 'GET',
@@ -27,7 +27,7 @@ const updates = async function(req, res, next)
                     message = 'No trips exist in our database!'; 
                 }
             }
-            res.render('updates', {title: 'devBlog Getaways', trips: json, message});
+            res.render('updates', {title: 'Vythern\'s devBlog', trips: json, message});
         })
         .catch(err => res.status(500).send(e.message));
 };

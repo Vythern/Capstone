@@ -1,6 +1,6 @@
 const index = (req, res) => 
 {
-    res.render('index', { title: "devBlog Getaways"});
+    res.render('index', { title: "Vythern's devBlog"});
 };
 //index is a method which recieves both a request and a response object
 //the request comes from the user, and is recieved by our router.  
