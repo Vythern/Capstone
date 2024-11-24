@@ -16,9 +16,9 @@
 						<div class="body">
 							<h1>Updates</h1>
 							<ul id="sites">
-			{{#each trips}}
+			{{#each articles}}
 								<li>
-									<a href="/api/trips/{{this.code}}"><img src="images/{{this.image}}" alt="Img"></a>
+									<a href="/api/articles/{{this.code}}"><img src="images/{{this.image}}" alt="Img"></a>
 									<h2><a href="/updates">{{this.name}}</a></h2>
 									{{{this.description}}}
 								</li>

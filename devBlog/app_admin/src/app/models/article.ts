@@ -1,4 +1,4 @@
-export interface Trip 
+export interface Article 
 {
     _id: string,
     code: string,

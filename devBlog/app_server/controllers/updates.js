@@ -1,4 +1,4 @@
-const tripsEndpoint = 'http://localhost:3000/api/trips';
+const articlesEndpoint = 'http://localhost:3000/api/articles';
 const options =
 {
     method: 'GET',
@@ -10,7 +10,7 @@ const options =
 
 const updates = async function(req, res, next)
 {
-    await fetch(tripsEndpoint, options)
+    await fetch(articlesEndpoint, options)
         .then(res => res.json())
         .then(json => 
         {
@@ -24,10 +24,10 @@ const updates = async function(req, res, next)
             {
                 if(!json.length) 
                 {
-                    message = 'No trips exist in our database!'; 
+                    message = 'No articles exist in our database!'; 
                 }
             }
-            res.render('updates', {title: 'Vythern\'s devBlog', trips: json, message});
+            res.render('updates', {title: 'Vythern\'s devBlog', articles: json, message});
         })
         .catch(err => res.status(500).send(e.message));
 };

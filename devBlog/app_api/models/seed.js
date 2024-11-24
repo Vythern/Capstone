@@ -1,16 +1,16 @@
 
 const Mongoose = require('./db');
-const Trip = require ('./devBlog');
+const Article = require ('./devBlog');
 
 
 var fs = require('fs');
-var trips = JSON.parse(fs.readFileSync('./data/trips.json','utf8'));
+var articles = JSON.parse(fs.readFileSync('./data/articles.json','utf8'));
 
 
 const seedDB = async () => 
 {
-    await Trip.deleteMany({});
-    await Trip.insertMany(trips);
+    await Article.deleteMany({});
+    await Article.insertMany(articles);
 };
 
 seedDB().then(async () => 

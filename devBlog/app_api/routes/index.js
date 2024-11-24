@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken'); // Enable JSON Web Tokens
 const router = express.Router();
 
 //import controllers to be routed here
-const tripsController = require('../controllers/trips');
+const articlesController = require('../controllers/articles');
 const authController = require('../controllers/authentication');
 
 // Method to authenticate our JWT
@@ -54,21 +54,21 @@ router
     .route('/login')
     .post(authController.login);
 
-//define the route for trips endpoint
+//define the route for articles endpoint
 router
-    .route('/trips')
-    .get(tripsController.tripsList)
-    .post(authenticateJWT, tripsController.tripsAddTrip);
+    .route('/articles')
+    .get(articlesController.articlesList)
+    .post(authenticateJWT, articlesController.articlesAddArticle);
 
 router
-    .route('/trips/:tripCode')
-    .get(tripsController.tripsFindByCode)
-    .put(authenticateJWT, tripsController.tripsUpdateTrip);
+    .route('/articles/:articleCode')
+    .get(articlesController.articlesFindByCode)
+    .put(authenticateJWT, articlesController.articlesUpdateArticle);
 
     //delete route
 router
-    .route('/trips/:tripCode')
-    .get(tripsController.tripsFindByCode)
-    .delete(authenticateJWT, tripsController.tripsDeleteTrip); 
+    .route('/articles/:articleCode')
+    .get(articlesController.articlesFindByCode)
+    .delete(authenticateJWT, articlesController.articlesDeleteArticle); 
 
 module.exports = router;

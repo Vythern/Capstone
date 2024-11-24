@@ -15,7 +15,7 @@ export class AuthenticationService
     constructor
     (
         @Inject(BROWSER_STORAGE) private storage: Storage,
-        private http: HttpClient //no more trip Data Service.  
+        private http: HttpClient //no more article Data Service.  
     ) { }
    // Variable to handle Authentication Responses
    authResp: AuthResponse = new AuthResponse();
@@ -64,9 +64,9 @@ export class AuthenticationService
         return { email, name } as User;
     }
     
-    // Couldn't make the tripDataService login method work, kept getting 301 errors.  
+    // Couldn't make the articleDataService login method work, kept getting 301 errors.  
     // Instead, went with a more direct approach with the formData.  
-    public login(user: User, passwd: string) : void //no tripDataService login
+    public login(user: User, passwd: string) : void //no articleDataService login
     { //post the formData to api/login
         let formData = 
         {
@@ -92,7 +92,7 @@ export class AuthenticationService
         })
     }
 
-    //same deal here, no more tripDataService.      
+    //same deal here, no more articleDataService.      
     public register(user: User, passwd: string) : void
     {  //post formData to api/register 
         let formData = 

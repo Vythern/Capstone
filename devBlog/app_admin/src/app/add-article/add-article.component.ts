@@ -3,18 +3,18 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from "@angular/forms";
 
 import { Router } from "@angular/router";
-import { TripDataService } from '../services/trip-data.service';
+import { ArticleDataService } from '../services/article-data.service';
 
 @Component
 ({
-    selector: 'app-add-trip',
+    selector: 'app-add-article',
     standalone: true,
     imports: [CommonModule, ReactiveFormsModule],
-    templateUrl: './add-trip.component.html',
-    styleUrl: './add-trip.component.css'
+    templateUrl: './add-article.component.html',
+    styleUrl: './add-article.component.css'
 })
 
-export class AddTripComponent implements OnInit
+export class AddArticleComponent implements OnInit
 {
     addForm!: FormGroup;
     submitted = false;
@@ -23,7 +23,7 @@ export class AddTripComponent implements OnInit
     (
         private formBuilder: FormBuilder,
         private router: Router,
-        private tripService: TripDataService
+        private articleService: ArticleDataService
     ) { }
 
     ngOnInit()
@@ -46,7 +46,7 @@ export class AddTripComponent implements OnInit
         this.submitted = true;
         if(this.addForm.valid)
         {
-            this.tripService.addTrip(this.addForm.value)
+            this.articleService.addArticle(this.addForm.value)
             .subscribe
             ( {
                 next: (data: any) => 

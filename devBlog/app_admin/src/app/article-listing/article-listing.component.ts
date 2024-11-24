@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TripCardComponent } from '../trip-card/trip-card.component';
+import { ArticleCardComponent } from '../article-card/article-card.component';
 
-import { TripDataService } from '../services/trip-data.service';
-import { Trip } from '../models/trip';
+import { ArticleDataService } from '../services/article-data.service';
+import { Article } from '../models/article';
 
 import { AuthenticationService } from '../services/authentication.service';
 
@@ -12,47 +12,47 @@ import { Router } from '@angular/router';
 
 @Component
 ({
-  selector: 'app-trip-listing',
+  selector: 'app-article-listing',
   standalone: true,
-  imports: [CommonModule, TripCardComponent],
-  templateUrl: './trip-listing.component.html',
-  styleUrl: './trip-listing.component.css',
-  providers: [TripDataService]
+  imports: [CommonModule, ArticleCardComponent],
+  templateUrl: './article-listing.component.html',
+  styleUrl: './article-listing.component.css',
+  providers: [ArticleDataService]
 })
 
-export class TripListingComponent implements OnInit
+export class ArticleListingComponent implements OnInit
 {
-    trips!:  Trip[];
+    articles!:  Article[];
     message: string = '';
 
     constructor
     (
-        private tripDataService: TripDataService, 
+        private articleDataService: ArticleDataService, 
         private router: Router,
         private authenticationService: AuthenticationService
-    ) { console.log('trip-listing constructor'); }
+    ) { console.log('article-listing constructor'); }
     
     public isLoggedIn() { return this.authenticationService.isLoggedIn(); }
 
-    public addTrip(): void
+    public addArticle(): void
     {
-        this.router.navigate(['add-trip']);
+        this.router.navigate(['add-article']);
     }
 
     private getStuff(): void
     {
-        this.tripDataService.getTrips().subscribe(
+        this.articleDataService.getArticles().subscribe(
         {
             next: (value: any) =>
             {
-                this.trips = value;
+                this.articles = value;
                 if(value.length > 0)
                 {
-                    this.message = 'There are ' + value.length + ' trips available.';
+                    this.message = value.length + ' Article(s) available.';
                 }
                 else
                 {
-                    this.message = 'There were no trips retrieved from the database';
+                    this.message = 'There were no articles retrieved from the database';
                 }
                 console.log(this.message);
             },

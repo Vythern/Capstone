@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const Trip = require('../models/devBlog'); //Register model
-const Model = mongoose.model('trips');
+const Article = require('../models/devBlog'); //Register model
+const Model = mongoose.model('articles');
 
-const tripsList = async(req, res) => 
+const articlesList = async(req, res) => 
 {
     const q = await Model.find({ }).exec();
 
@@ -10,18 +10,18 @@ const tripsList = async(req, res) =>
     else   { return res.status(200).json(q);  }
 };
 
-const tripsFindByCode = async(req, res) => 
+const articlesFindByCode = async(req, res) => 
 {
-    const q = await Model.find({'code' : req.params.tripCode }).exec();
+    const q = await Model.find({'code' : req.params.articleCode }).exec();
     //return one record
 
     if(!q) { return res.status(404).json(err); }
     else   { return res.status(200).json(q);   }
 }
 
-const tripsAddTrip = async(req, res) =>
+const articlesAddArticle = async(req, res) =>
 {
-    const newTrip = new Trip
+    const newArticle = new Article
     ({
         code: req.body.code,
         name: req.body.name,
@@ -33,19 +33,19 @@ const tripsAddTrip = async(req, res) =>
         description: req.body.description
     });
 
-    const q = await newTrip.save();
+    const q = await newArticle.save();
 
     if(!q) { return res.status(400).json(err); }
     else   { return res.status(201).json(q); }
 }
 
-const tripsUpdateTrip = async (req, res) => {
+const articlesUpdateArticle = async (req, res) => {
     // Uncomment for debugging
     // console.log(req.params);
     // console.log(req.body);
 
     const q = await Model.findOneAndUpdate(
-    { 'code': req.params.tripCode },
+    { 'code': req.params.articleCode },
         {
             code: req.body.code,
             name: req.body.name,
@@ -58,34 +58,34 @@ const tripsUpdateTrip = async (req, res) => {
         }
     ).exec();
 
-    if (!q) { return res.status(400).json({ message: 'Update failed or trip code not found' }); }
+    if (!q) { return res.status(400).json({ message: 'Update failed or article code not found' }); }
     else    { return res.status(201).json(q); }
 };
 
-const tripsDeleteTrip = async (req, res) => {
+const articlesDeleteArticle = async (req, res) => {
     try
     {
         //Get by code from request
-        const tripCode = req.params.tripCode;
+        const articleCode = req.params.articleCode;
         
         //find and delete
-        const deletedTrip = await Model.findOneAndDelete({ 'code': tripCode }).exec();
+        const deletedArticle = await Model.findOneAndDelete({ 'code': articleCode }).exec();
 
-        if (!deletedTrip) { return res.status(404).json({ message: 'Trip not found' }); }
+        if (!deletedArticle) { return res.status(404).json({ message: 'Article not found' }); }
 
-        return res.status(200).json({ message: 'Trip deleted', trip: deletedTrip }); //success
+        return res.status(200).json({ message: 'Article deleted', article: deletedArticle }); //success
 
-    } catch (err) { return res.status(500).json({ message: 'Error deleting trip', error: err }); }
+    } catch (err) { return res.status(500).json({ message: 'Error deleting article', error: err }); }
 };
 
 
 module.exports = 
 {
-    tripsList, 
-    tripsFindByCode, 
-    tripsAddTrip, 
-    tripsUpdateTrip,
-    tripsDeleteTrip
+    articlesList, 
+    articlesFindByCode, 
+    articlesAddArticle, 
+    articlesUpdateArticle,
+    articlesDeleteArticle
 };
 
 
