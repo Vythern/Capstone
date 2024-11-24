@@ -58,11 +58,25 @@ const tripsUpdateTrip = async (req, res) => {
         }
     ).exec();
 
-    if (!q) { return res.status(400).json(err); } 
+    if (!q) { return res.status(400).json({ message: 'Update failed or trip code not found' }); }
     else    { return res.status(201).json(q); }
 };
 
-    
+const tripsDeleteTrip = async (req, res) => {
+    try
+    {
+        //Get by code from request
+        const tripCode = req.params.tripCode;
+        
+        //find and delete
+        const deletedTrip = await Model.findOneAndDelete({ 'code': tripCode }).exec();
+
+        if (!deletedTrip) { return res.status(404).json({ message: 'Trip not found' }); }
+
+        return res.status(200).json({ message: 'Trip deleted', trip: deletedTrip }); //success
+
+    } catch (err) { return res.status(500).json({ message: 'Error deleting trip', error: err }); }
+};
 
 
 module.exports = 
@@ -70,7 +84,8 @@ module.exports =
     tripsList, 
     tripsFindByCode, 
     tripsAddTrip, 
-    tripsUpdateTrip
+    tripsUpdateTrip,
+    tripsDeleteTrip
 };
 
 

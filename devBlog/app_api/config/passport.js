@@ -17,7 +17,7 @@ async (username, password, done) =>
     //invalid password.  
     if(!q.validPassword(password)) { return done(null, false, { message: 'Incorrect Password'}); }
     
-    return done(Null, q); //password and username correct.  
+    return done(null, q); //password and username correct.  consistency in casing.  
 }));
 
 //potentially a file with typos in it.  

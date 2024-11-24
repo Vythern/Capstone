@@ -42,31 +42,10 @@ export class TripDataService
         return this.http.put<Trip>(this.url + '/' + formData.code, formData);
     }
 
-
-    // Call to our /login endpoint, returns JWT
-    // console.log('Inside TripDataService::login');
-    login(user: User, passwd: string) : Observable<AuthResponse>
+    deleteTrip(tripCode: string): Observable<void> //returns nothing so void observable.  
     {
-        return this.handleAuthAPICall('login', user, passwd);
+        return this.http.delete<void>(this.url + '/' + tripCode);
     }
 
-    // Call to our /register endpoint, creates user and returns JWT
-    // console.log('Inside TripDataService::register');
-    register(user: User, passwd: string) : Observable<AuthResponse>
-    {
-        return this.handleAuthAPICall('register', user, passwd);
-    }
-    // helper method to process both login and register methods
-    handleAuthAPICall(endpoint: string, user: User, passwd: string) :
-    Observable<AuthResponse>
-    {
-        // console.log('Inside TripDataService::handleAuthAPICall');
-        let formData = 
-        {
-            name: user.name,
-            email: user.email,
-            password: passwd
-        };
-        return this.http.post<AuthResponse>(this.baseUrl + '/' + endpoint, formData);
-    }
+//removed login and register methods, no longer useful.  
 }

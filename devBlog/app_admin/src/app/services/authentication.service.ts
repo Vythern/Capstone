@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { BROWSER_STORAGE } from '../storage';
 import { User } from '../models/user';
 import { AuthResponse } from '../models/auth-response';
-import { TripDataService } from '../services/trip-data.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class AuthenticationService
     constructor
     (
         @Inject(BROWSER_STORAGE) private storage: Storage,
-        private tripDataService: TripDataService
+        private http: HttpClient //no more trip Data Service.  
     ) { }
    // Variable to handle Authentication Responses
    authResp: AuthResponse = new AuthResponse();
@@ -43,7 +43,7 @@ export class AuthenticationService
     // Boolean to determine if we are logged in and the token is
     // still valid. Even if we have a token we will still have to
     // reauthenticate if the token has expired
-    public isLoggedIn(): boolean
+    public isLoggedIn(): boolean //maybe simplify to just this.getToken().  Verify truthiness
     {
         const token: string = this.getToken();
         if (token) 
@@ -64,20 +64,23 @@ export class AuthenticationService
         return { email, name } as User;
     }
     
-    // Login method that leverages the login method in tripDataService
-    // Because that method returns an observable, we subscribe to the
-    // result and only process when the Observable condition is satisfied
-    // Uncomment the two console.log messages for additional debugging
-    // information.
-    public login(user: User, passwd: string) : void 
-    {
-        this.tripDataService.login(user,passwd).subscribe(
+    // Couldn't make the tripDataService login method work, kept getting 301 errors.  
+    // Instead, went with a more direct approach with the formData.  
+    public login(user: User, passwd: string) : void //no tripDataService login
+    { //post the formData to api/login
+        let formData = 
+        {
+            name: user.name,
+            email: user.email,
+            password: passwd
+        };
+        this.http.post<AuthResponse>('http://localhost:3000/api/login', formData)
+        .subscribe(
         {
             next: (value: any) =>
             {
                 if(value)
                 {
-                    console.log(value);
                     this.authResp = value;
                     this.saveToken(this.authResp.token);
                 }
@@ -89,18 +92,16 @@ export class AuthenticationService
         })
     }
 
-    
-    // Register method that leverages the register method in
-    // tripDataService
-    // Because that method returns an observable, we subscribe to the
-    // result and only process when the Observable condition is satisfied
-    // Uncomment the two console.log messages for additional debugging
-    // information. Please Note: This method is nearly identical to the
-    // login method because the behavior of the API logs a new user in
-    // immediately upon registration
+    //same deal here, no more tripDataService.      
     public register(user: User, passwd: string) : void
-    {
-        this.tripDataService.register(user,passwd)
+    {  //post formData to api/register 
+        let formData = 
+        {
+            name: user.name,
+            email: user.email,
+            password: passwd
+        };
+        this.http.post<AuthResponse>('http://localhost:3000/api/register', formData)
         .subscribe(
         {
             next: (value: any) =>

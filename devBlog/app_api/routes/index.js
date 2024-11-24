@@ -65,4 +65,10 @@ router
     .get(tripsController.tripsFindByCode)
     .put(authenticateJWT, tripsController.tripsUpdateTrip);
 
+    //delete route
+router
+    .route('/trips/:tripCode')
+    .get(tripsController.tripsFindByCode)
+    .delete(authenticateJWT, tripsController.tripsDeleteTrip); 
+
 module.exports = router;
