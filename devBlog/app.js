@@ -14,8 +14,6 @@ var usersRouter = require('./app_server/routes/users');
 var updatesRouter = require('./app_server/routes/updates');
 var apiRouter = require('./app_api/routes/index');
 
-var handlebars = require('hbs');
-
 //bring db
 require('./app_api/models/db');
 
@@ -23,14 +21,6 @@ require('./app_api/models/db');
 require('dotenv').config();
 
 var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'app_server', 'views'));
-
-//register handlebar partials.  
-handlebars.registerPartials(__dirname + '/app_server/views/partials');
-
-app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.json());
