@@ -42,7 +42,12 @@ app.use(passport.initialize());
 //use cors
 app.use('/api', (req, res, next) => 
 {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+    let cors = {
+        origin: ["http://localhost:4200", "http://localhost:3001"],
+        default: "http://localhost:3001"
+    }
+    const origin = cors.origin.includes(req.header('origin').toLowerCase()) ? req.headers.origin : cors.default;
+    res.header('Access-Control-Allow-Origin', origin);
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     next();    

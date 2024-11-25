@@ -1,0 +1,69 @@
+<div>
+	<div id="background">
+		<div id="page">
+			<div id="header">
+				<div id="logo">
+					<a href=""><img src="assets/images/logo.png" alt="LOGO" height="150" width="200"></a>
+				</div>
+				<div id="navigation">
+					<ul>
+						<li>
+							<a href="">Welcome</a>
+						</li>
+						<li class="selected">
+							<a href="/articles">Articles</a>
+						</li>
+						<li>
+							<a href="/projects">Projects</a>
+						</li>
+						<li>
+							<a href="/contact">Contact</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="contents">
+				<div class="box">
+					<div>
+						<div class="body">
+							<h1>Articles</h1>
+							<ul *ngFor="let article of articles" id="sites">
+								<li>
+									<a href="/api/articles/{{article.code}}"><img src="assets/images/{{article.image}}" alt="Img"></a>
+									<h2><a href="/articles">{{article.name}}</a></h2>
+									<p>
+										{{article.description}}
+									</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div>
+				<ul class="navigation">
+					<li>
+						<a href="">Welcome</a>
+					</li>
+					<li class="active">
+						<a href="/articles">Articles</a>
+					</li>
+					<li>
+						<a href="/projects">Projects</a>
+					</li>
+					<li>
+						<a href="/contact">Contact</a>
+					</li>
+				</ul>
+				<div id="connect">
+					<a href="http://pinterest.com/fwtemplates/" target="_blank" class="pinterest"></a> <a href="http://freewebsitetemplates.com/go/facebook/" target="_blank" class="facebook"></a> <a href="http://freewebsitetemplates.com/go/twitter/" target="_blank" class="twitter"></a> <a href="http://freewebsitetemplates.com/go/googleplus/" target="_blank" class="googleplus"></a>
+				</div>
+			</div>
+			<p>
+				© 2024 by Nate Dukes. All Rights Reserved
+			</p>
+		</div>
+	</div>
+    </div>
