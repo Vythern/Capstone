@@ -13,7 +13,7 @@ import { ArticleDataService } from '../services/article-data.service';
 })
 export class DeleteArticleComponent implements OnInit {
   public deleteForm!: FormGroup;
-  articleName: string = '';  // Store the article name for display
+  articleTitle: string = '';  // Store the article title for display
   submitted = false;
   message: string = '';
 
@@ -35,16 +35,16 @@ export class DeleteArticleComponent implements OnInit {
     // Initialize the form with the article code and a confirmation question
     this.deleteForm = this.formBuilder.group({
       code: [articleCode, Validators.required],
-      name: ['', Validators.required] // We will set this later
+      title: ['', Validators.required] // We will set this later
     });
 
-    // We can set the articleName here for display in the template
+    // We can set the articleTitle here for display in the template
     this.articleDataService.getArticle(articleCode).subscribe({
       next: (value: any) => {
         if (value && value.length > 0) {
-          this.articleName = value[0].name; // Extract the article name from the response
+          this.articleTitle = value[0].title; // Extract the article title from the response
           this.deleteForm.patchValue({
-            name: this.articleName
+            title: this.articleTitle
           });
         }
       },

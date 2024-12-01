@@ -32,11 +32,8 @@ export class AddArticleComponent implements OnInit
         ({
             _id: [],
             code: ['', Validators.required],
-            name: ['', Validators.required],
-            length: ['', Validators.required],
-            start: ['', Validators.required],
-            resort: ['', Validators.required],
-            perPerson: ['', Validators.required],
+            title: ['', Validators.required],
+            date: ['', Validators.required],
             image: ['', Validators.required],
             description: ['', Validators.required],
         })

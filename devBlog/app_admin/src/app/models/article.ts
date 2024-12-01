@@ -2,11 +2,8 @@ export interface Article
 {
     _id: string,
     code: string,
-    name: string,
-    length: string,
-    start: Date,
-    resort: string,
-    perPerson: string,
+    title: string,
+    date: Date,
     image: string,
     description: string
 }

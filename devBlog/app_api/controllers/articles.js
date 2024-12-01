@@ -24,11 +24,8 @@ const articlesAddArticle = async(req, res) =>
     const newArticle = new Article
     ({
         code: req.body.code,
-        name: req.body.name,
-        length: req.body.length,
-        start: req.body.start,
-        resort: req.body.resort,
-        perPerson: req.body.perPerson,
+        title: req.body.title,
+        date: req.body.date,
         image: req.body.image,
         description: req.body.description
     });
@@ -48,11 +45,8 @@ const articlesUpdateArticle = async (req, res) => {
     { 'code': req.params.articleCode },
         {
             code: req.body.code,
-            name: req.body.name,
-            length: req.body.length,
-            start: req.body.start,
-            resort: req.body.resort,
-            perPerson: req.body.perPerson,
+            title: req.body.title,
+            date: req.body.date,
             image: req.body.image,
             description: req.body.description
         }

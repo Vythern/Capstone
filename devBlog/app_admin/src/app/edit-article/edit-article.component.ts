@@ -38,11 +38,8 @@ export class EditArticleComponent implements OnInit {
         this.editForm = this.formBuilder.group({
             _id: [],
             code: [articleCode, Validators.required],  // Set the code, but don't allow edits
-            name: ['', Validators.required],
-            length: ['', Validators.required],
-            start: ['', Validators.required],
-            resort: ['', Validators.required],
-            perPerson: ['', Validators.required],
+            title: ['', Validators.required],
+            date: ['', Validators.required],
             image: ['', Validators.required],
             description: ['', Validators.required]
         });

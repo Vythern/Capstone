@@ -3,8 +3,10 @@
 		<div id="page">
 			<div id="header">
 				<div id="logo">
-					<a href=""><img src="assets/images/logo.png" alt="LOGO" height="150" width="200"></a>
-				</div>
+                    <a href="">
+                      <img src="assets/images/logo.png" alt="LOGO" class="logo-image" height="150" width="200">
+                    </a>
+                  </div>                  
 				<div id="navigation">
 					<ul>
 						<li>
@@ -30,7 +32,10 @@
 							<ul *ngFor="let article of articles" id="sites">
 								<li>
 									<a href="/api/articles/{{article.code}}"><img src="assets/images/{{article.image}}" alt="Img"></a>
-									<h2><a href="/articles">{{article.name}}</a></h2>
+									<h2><a href="/articles">{{article.title}}</a></h2>
+                                    <p>
+										{{article.date}}
+									</p>
 									<p>
 										{{article.description}}
 									</p>
