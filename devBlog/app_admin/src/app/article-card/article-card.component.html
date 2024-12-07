@@ -3,8 +3,8 @@
         <h5>{{ article.title }}</h5>
         <small class="text-muted">{{ article.date | date: 'mediumDate' }}</small>
     </div>
-    <img src="assets/images/{{ article.image }}"
-        alt="article thumbnail" class="card-img-top">
+    <img src="assets/images/{{ article.image }}" 
+    alt="article thumbnail" class="card-img-top" style="width: 300px;">
     <div class="card-body">
         <p class="card-text" [innerHTML]="article.description">
         </p>

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from "@angula
 
 import { Router } from "@angular/router";
 import { ArticleDataService } from '../services/article-data.service';
+import { Article } from '../models/article';
 
 @Component
 ({
@@ -19,6 +20,9 @@ export class AddArticleComponent implements OnInit
     addForm!: FormGroup;
     submitted = false;
     
+    articleCodes: number[] = []; //use this to check what codes exist.  
+
+
     constructor
     (
         private formBuilder: FormBuilder,
@@ -26,7 +30,7 @@ export class AddArticleComponent implements OnInit
         private articleService: ArticleDataService
     ) { }
 
-    ngOnInit()
+    ngOnInit(): void
     {
         this.addForm = this.formBuilder.group
         ({
@@ -36,8 +40,27 @@ export class AddArticleComponent implements OnInit
             date: ['', Validators.required],
             image: ['', Validators.required],
             description: ['', Validators.required],
-        })
+        });
+    
+        //find lowest available code.  
+        this.articleService.getArticles().subscribe((articles: Article[]) =>
+        {
+            this.articleCodes = articles.map(article => parseInt(article.code, 10)).sort((a, b) => a - b); //parse to integer, sort
+            this.setNextAvailableCode();
+        });
     }
+
+    private setNextAvailableCode(): void //set to next available code, starting at one.  
+    {
+        let nextCode = 1;
+        for (let i = 0; i < this.articleCodes.length; i++) 
+        {
+            if (this.articleCodes[i] !== nextCode) { break; }
+            nextCode++;
+        }
+        this.addForm.patchValue({ code: nextCode });
+    }
+
     public onSubmit()
     {
         this.submitted = true;

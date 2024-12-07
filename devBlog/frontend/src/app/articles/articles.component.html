@@ -34,8 +34,8 @@
 									<a href="/api/articles/{{article.code}}"><img src="assets/images/{{article.image}}" alt="Img"></a>
 									<h2><a href="/articles">{{article.title}}</a></h2>
                                     <p>
-										{{article.date}}
-									</p>
+                                        {{ article.date | date: 'MMMM d, y' }}
+                                    </p>
 									<p>
 										{{article.description}}
 									</p>
