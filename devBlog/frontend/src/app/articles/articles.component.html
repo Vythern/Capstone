@@ -6,7 +6,7 @@
                     <a href="">
                       <img src="assets/images/logo.png" alt="LOGO" class="logo-image" height="150" width="200">
                     </a>
-                  </div>                  
+                  </div>
 				<div id="navigation">
 					<ul>
 						<li>
@@ -24,12 +24,20 @@
 					</ul>
 				</div>
 			</div>
+            <div class = "search-bar">
+            <input
+                type = "text"
+                [(ngModel)]="searchTerm"
+                class = "form-control"
+            />
+            <button (click)="refreshSearch()" class="btn btn-primary">Filter by Name</button>
+            </div>
 			<div id="contents">
 				<div class="box">
 					<div>
 						<div class="body">
 							<h1>Articles</h1>
-							<ul *ngFor="let article of articles" id="sites">
+							<ul *ngFor="let article of getArticlesByPage()" id="sites">
 								<li>
 									<a href="/api/articles/{{article.code}}"><img src="assets/images/{{article.image}}" alt="Img"></a>
 									<h2><a href="/articles">{{article.title}}</a></h2>
@@ -46,6 +54,12 @@
 				</div>
 			</div>
 		</div>
+        <div class = "pages">
+            <button (click)="getPreviousPage()" [disabled] = "activePage === 1">Previous</button>
+            <span>Page {{ activePage }} of {{ getTotalPages() }}</span>
+            <button (click)="getNextPage()" [disabled]="activePage === getTotalPages()">Next</button>
+        </div>
+
 		<div id="footer">
 			<div>
 				<ul class="navigation">

@@ -6,8 +6,43 @@ img
     height: auto;
 }
   
-  .logo-image
-  {
-    width: 200px;
-    height: 150px;
-  }
+.logo-image
+{
+  width: 200px;
+  height: 150px;
+}
+
+.search-bar 
+{
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+
+.search-bar input
+{
+  width: 150px;
+  height: 18px;
+}
+
+.search-bar button 
+{
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.pages
+{
+    margin-left: 330px;
+    color: grey;
+}
+
+.pages button
+{
+    margin-right: 5px;
+    color: black;
+}
+.pages span
+{
+    margin-right: 5px;
+    color: grey;
+}
